@@ -280,7 +280,7 @@
             scoring = require("./scoring"), feedback = {
                 default_feedback: {
                     warning: "",
-                    suggestions: ["Hãy dùng thêm ký tự", "Có thể bỏ bớt ký hiệu, chữ số hoặc chữ in hoa"]
+                    suggestions: ["Hãy dùng thêm ký tự.", "Có thể bỏ bớt ký hiệu, chữ số hoặc chữ in hoa."]
                 },
                 get_feedback: function(e, s) {
                     var a, t, r, n, o, i;
@@ -301,36 +301,36 @@
                         case "dictionary":
                             return this.get_dictionary_match_feedback(e, s);
                         case "spatial":
-                            return a = e.graph.toUpperCase(), t = 1 === e.turns ? "Các hàng phím thẳng dễ đoán" : "Các mẫu bàn phím ngắn rất dễ đoán", {
+                            return a = e.graph.toUpperCase(), t = 1 === e.turns ? "Các hàng phím thẳng dễ đoán." : "Các mẫu bàn phím ngắn rất dễ đoán.", {
                                 warning: t,
                                 suggestions: ["Sử dụng mẫu bàn phím dài hơn với nhiều lượt"]
                             };
                         case "repeat":
-                            return t = 1 === e.base_token.length ? 'Lặp lại ký tự ví dụ như "aaa" rất dễ đoán' : 'Lặp lại như "abcabcabc" chỉ hơi khó đoán hơn "abc" một ít thôi.', {
+                            return t = 1 === e.base_token.length ? 'Lặp lại ký tự ví dụ như "aaa" rất dễ đoán.' : 'Lặp lại như "abcabcabc" chỉ hơi khó đoán hơn "abc" một ít thôi.', {
                                 warning: t,
-                                suggestions: ["Hãy hạn chế lặp lại các từ và ký tự"]
+                                suggestions: ["Hãy hạn chế lặp lại các từ và ký tự."]
                             };
                         case "sequence":
                             return {
-                                warning: "Các chuỗi như abc hoặc 6543 rất dễ đoán",
-                                suggestions: ["Tránh dùng những trình tự này"]
+                                warning: "Các chuỗi như abc hoặc 6543 rất dễ đoán.",
+                                suggestions: ["Tránh dùng những trình tự này."]
                             };
                         case "regex":
                             if ("recent_year" === e.regex_name) return {
                                 warning: "Dùng những năm gần đây sẽ rất dể đoán.",
-                                suggestions: ["Tránh dùng những năm gần đây trong mật khẩu", " Tránh những năm gắn liền với thông tin của bạn ví dụ như năm sinh"]
+                                suggestions: ["Tránh dùng những năm gần đây trong mật khẩu.", " Tránh những năm gắn liền với thông tin của bạn ví dụ như năm sinh."]
                             };
                             break;
                         case "date":
                             return {
-                                warning: "Ngày thường dể đoán",
-                                suggestions: ["Tránh ngày và năm có liên quan đến bạn"]
+                                warning: "Dùng ngày thường dể đoán.",
+                                suggestions: ["Tránh ngày tháng và năm có liên quan đến bạn."]
                             }
                     }
                 },
                 get_dictionary_match_feedback: function(e, s) {
                     var a, t, r, n, o;
-                    return n = "passwords" === e.dictionary_name ? !s || e.l33t || e.reversed ? e.guesses_log10 <= 4 ? "Đây là một mật khẩu thường được sử dụng" : void 0 : e.rank <= 10 ? "Mật khẩu của bạn nằm trong danh sách TOP 10 mật khẩu phổ biến" : e.rank <= 100 ? "Mật khẩu của bạn nằm trong danh sách TOP 100 mật khẩu phổ biến." : "Đây là một mật khẩu rất phổ biến." : "english" === e.dictionary_name ? s ? "Từ này dễ đoán" : void 0 : "surnames" === (a = e.dictionary_name) || "male_names" === a || "female_names" === a ? s ? "Dùng họ và tên của bạn sẽ dể đoán." : "Những tên thường gặp cũng sẽ dể đoán." : "", r = [], o = e.token, o.match(scoring.START_UPPER) ? r.push("Nếu chỉ viết hoa nó cũng sẽ không giúp ích nhiều.") : o.match(scoring.ALL_UPPER) && r.push("Tất cả các ký tự viết hoa cũng dể đoán giống như tất cả chữ thường"), e.reversed && e.token.length >= 4 && r.push("Việc đảo lộn các từ cũng không khó đoán hơn là bao."), e.l33t && r.push("Thay thế ký tự '@' thay cho ký tự 'a' cũng không làm mật khẩu trở nên quá khó."), t = {
+                    return n = "passwords" === e.dictionary_name ? !s || e.l33t || e.reversed ? e.guesses_log10 <= 4 ? "Đây là một mật khẩu thường được sử dụng." : void 0 : e.rank <= 10 ? "Mật khẩu của bạn nằm trong danh sách TOP 10 mật khẩu phổ biến." : e.rank <= 100 ? "Mật khẩu của bạn nằm trong danh sách TOP 100 mật khẩu phổ biến." : "Đây là một mật khẩu rất phổ biến." : "english" === e.dictionary_name ? s ? "Từ này dễ đoán" : void 0 : "surnames" === (a = e.dictionary_name) || "male_names" === a || "female_names" === a ? s ? "Dùng họ và tên của bạn sẽ dể đoán." : "Những tên thường gặp cũng sẽ dể đoán." : "", r = [], o = e.token, o.match(scoring.START_UPPER) ? r.push("Nếu chỉ viết hoa nó cũng sẽ không giúp ích nhiều.") : o.match(scoring.ALL_UPPER) && r.push("Tất cả các ký tự viết hoa cũng dể đoán giống như tất cả chữ thường."), e.reversed && e.token.length >= 4 && r.push("Việc đảo lộn các từ cũng không khó đoán hơn là bao."), e.l33t && r.push("Thay thế ký tự '@' thay cho ký tự 'a' cũng không làm mật khẩu trở nên quá khó."), t = {
                         warning: n,
                         suggestions: r
                     }
