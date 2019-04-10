@@ -68,7 +68,7 @@ meter[value="3"]::-moz-meter-bar { background: orange; }
 meter[value="4"]::-moz-meter-bar { background: green; }
 
 .feedback {
-	color: #9ab;
+	color: #08577C;
 	font-size: 90%;
 	padding: 0 .25em;
 	font-family: Fira Sans, cursive;
