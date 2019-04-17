@@ -42,11 +42,11 @@ meter {
 	-webkit-appearance: none;
 	   -moz-appearance: none;
 	        appearance: none;
-            
+
 	margin: 0 auto 1em;
 	width: 100%;
 	height: .5em;
-    
+
     /* Applicable only to Firefox */
 	background: none;
 	background-color: rgba(0,0,0,0.1);
@@ -73,4 +73,25 @@ meter[value="4"]::-moz-meter-bar { background: green; }
 	padding: 0 .25em;
 	font-family: Fira Sans, cursive;
 	margin-top: 1em;
+}
+.check-pass {
+	padding-left:0px;
+	list-style-type: none;
+}
+.check-pass > li {
+	color:rgba(17, 17, 17, 0.6);
+	font-size: 1em;
+}
+.check-pass > li::before {
+	color:#DDD;
+	padding-right: 5px;
+	content: '✔';
+	display: inline-block;
+}
+.check-pass > li.pass {
+  color: #111;
+}
+.check-pass > li.pass::before {
+  color: #2B93D9;
+  text-shadow: 0 0 8px rgba(43, 147, 217, 0.5);
 }
